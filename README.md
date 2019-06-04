@@ -10,27 +10,35 @@ This respository contains all the source code which I did while learning Flutter
  - [Gesture Detector Widget](#gesture-detector-widget)
  
  
-#### Hello Flutter
+### Hello Flutter
 
 Dive deep into the flutter mobile UI framework by writing the first set of code on Intellj IDE, (or,) VS Code (or) Android Studio.
 
+[/project](/first_flutter_app)
+
 ![Hello Flutter](/resources/welcome_home.png "Hello Flutter")
 
-#### Layout and Container
+### Layout and Container
 
 Easy layout wth container, column and rows.
 
+[/project](/intro_layouts_containers)
+
 ![Layout and Container](/resources/layout_container.png "Layout and Container")
 
-
-#### Scaffold App
+### Scaffold App
 
 A theme based mobile approach to write beautiful mobile apps.
 
+[/project](/intro_scaffold)
 
-#### Gesture Detector Widget
+![Scaffold](/resources/scaffold.png "Scaffold")
+
+### Gesture Detector Widget
 
 Everything is a widget, lets create one!
+
+[/project](/gesture_detector)
 
 ![Gesture Detector ](/resources/gesture_detector.png "Gesture Detector ")
 

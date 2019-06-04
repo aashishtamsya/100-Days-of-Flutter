@@ -14,8 +14,10 @@ class Home extends StatelessWidget {
     // TODO: implement build
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Colors.lightBlue,
-        title: new Text("Hello Bar"),
+        backgroundColor: Colors.deepPurpleAccent,
+        title: new Text(
+          "Hello Bar",
+        ),
         actions: <Widget>[
           new IconButton(
               icon: new Icon(Icons.send), onPressed: () => _onPress("Send")),
@@ -33,18 +35,22 @@ class Home extends StatelessWidget {
             new Text(
               "The Blacklist",
               style: new TextStyle(
-                  fontSize: 14,
+                  fontSize: 34,
                   fontWeight: FontWeight.w400,
                   color: Colors.grey),
             ),
             new InkWell(
-              child: new Text("Press Me!"),
+              child: new Text(
+                "Press Me!",
+                style: TextStyle(fontSize: 24),
+              ),
               onTap: () => _onTap(),
             )
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.deepPurple,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("Home")),
           BottomNavigationBarItem(
@@ -56,7 +62,7 @@ class Home extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => debugPrint("Floating Action Button Tapped!"),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.green,
         tooltip: 'Going Up!',
         child: Icon(Icons.add),
       ),
