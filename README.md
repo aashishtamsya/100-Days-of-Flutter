@@ -13,15 +13,18 @@ This respository contains all the source code which I did while learning Flutter
 
 Dive deep into the flutter mobile UI framework by writing the first set of code on Intellj IDE, (or,) VS Code (or) Android Studio.
 
+![Hello Flutter](/resources/welcome_home.png "Hello Flutter")
 
 #### Scaffold App
 
 A theme based mobile approach to write beautiful mobile apps.
 
+
 #### Gesture Detector Widget
 
 Everything is a widget, lets create one!
 
+![Gesture Detector ](/resources/gesture_detector.png "Gesture Detector ")
 
 ## Contributor 
 
