@@ -4,24 +4,24 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      color: Colors.greenAccent,
+      color: Colors.white,
       alignment: Alignment.center,
 
       child: new Stack(
         children: <Widget>[
           Container(
-            width: 100,
-            height: 100,
+            width: 200,
+            height: 200,
             color: Colors.red,
           ),
           Container(
-            width: 90,
-            height: 90,
+            width: 150,
+            height: 150,
             color: Colors.green,
           ),
           Container(
-            width: 80,
-            height: 80,
+            width: 100,
+            height: 100,
             color: Colors.blue,
           ),
         ],

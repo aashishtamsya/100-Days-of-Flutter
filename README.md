@@ -5,6 +5,7 @@ This respository contains all the source code which I did while learning Flutter
 ## Table of Content.
 
  - [Hello Flutter](#hello-flutter)
+ - [Layout and Container](#layout-and-container)
  - [Scaffold App](#scaffold-app)
  - [Gesture Detector Widget](#gesture-detector-widget)
  
@@ -14,6 +15,13 @@ This respository contains all the source code which I did while learning Flutter
 Dive deep into the flutter mobile UI framework by writing the first set of code on Intellj IDE, (or,) VS Code (or) Android Studio.
 
 ![Hello Flutter](/resources/welcome_home.png "Hello Flutter")
+
+#### Layout and Container
+
+Easy layout wth container, column and rows.
+
+![Layout and Container](/resources/layout_container.png "Layout and Container")
+
 
 #### Scaffold App
 
