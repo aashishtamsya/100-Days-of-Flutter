@@ -35,7 +35,7 @@ class MakeItRainState extends State<MakeItRain> {
                   child: Text(
                     "\$ $_moneyCounter",
                     style: TextStyle(
-                        color: Colors.greenAccent,
+                        color: _moneyCounter > 10000 ? Colors.green : Colors.greenAccent,
                         fontSize: 34,
                         fontWeight: FontWeight.w800),
                   ),
