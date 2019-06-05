@@ -14,6 +14,7 @@ This respository contains all the source code which I did while learning Flutter
  - [Layout and Container](#layout-and-container)
  - [Scaffold App](#scaffold-app)
  - [Gesture Detector Widget](#gesture-detector-widget)
+ - [Stateful Widget](#stateful-widget)
  
  
 ### Hello Flutter
@@ -46,7 +47,16 @@ Everything is a widget, lets create one!
 
 [/project](/gesture_detector)
 
-![Gesture Detector ](/resources/gesture_detector.png "Gesture Detector ")
+![Gesture Detector](/resources/gesture_detector.png "Gesture Detector")
+
+### Stateful Widget
+
+Make It Rain app uses stateful widget to update the UI.
+
+[/project](/make_it_rain)
+
+![Make It Rain](/resources/make_it_ran.png "Make It Rain")
+
 
 ## Contributor 
 
