@@ -55,7 +55,7 @@ Make It Rain app uses stateful widget to update the UI.
 
 [/project](/make_it_rain)
 
-![Make It Rain](/resources/make_it_ran.png "Make It Rain")
+![Make It Rain](/resources/make_it_rain.png "Make It Rain")
 
 
 ## Contributor 
