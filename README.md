@@ -17,6 +17,7 @@ This respository contains all the source code which I did while learning Flutter
  - [Stateful Widget](#stateful-widget)
  - [Login Form](#login-form)
  - [Weight On Planet X](#weight-on-planet-x)
+ - [BMI Calculator](#bmi-calculator)
  
 ### Hello Flutter
 
@@ -73,6 +74,15 @@ Weight On Planet X is an application which uses radio button to calculate your w
 [/project](/weight_on_planet_x)
 
 ![Weight On Planet X](/resources/weight_on_planet_x.png "Weight On Planet X")
+
+### Weight On Planet X
+
+BMI Calculator is an application which uses sliders to calculate your BMI.
+
+[/project](/bmi_calculator)
+
+![BMI Calculator](/resources/bmi_calculator.png "BMI Calculator")
+
 
 ## Contributor 
 
