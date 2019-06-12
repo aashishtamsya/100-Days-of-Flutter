@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -7,40 +8,87 @@ class Home extends StatefulWidget {
   }
 }
 
+class BMI {
+  static const UNDERWEIGHT = const BMI._("UNDERWEIGHT");
+  static const NORMAL = const BMI._("NORMAL");
+  static const OVERWEIGHT = const BMI._("OVERWEIGHT");
+  static const OBSESE = const BMI._("OBSESE");
+
+  static get values => [UNDERWEIGHT, NORMAL, OVERWEIGHT, OBSESE];
+
+  final String value;
+
+  const BMI._(this.value);
+
+  static BMI current(double bmi) {
+    if (bmi >= 30.0) {
+      return BMI.OBSESE;
+    } else if (bmi >= 25.0 && bmi < 30.0) {
+      return BMI.OVERWEIGHT;
+    } else if (bmi >= 18.5 && bmi < 25.0) {
+      return BMI.NORMAL;
+    } else {
+      return BMI.UNDERWEIGHT;
+    }
+  }
+
+  static Color color(BMI bmi) {
+    switch (bmi) {
+      case BMI.UNDERWEIGHT:
+        return Colors.cyanAccent;
+      case BMI.NORMAL:
+        return Colors.green;
+      case BMI.OVERWEIGHT:
+        return Colors.yellow;
+      case BMI.OBSESE:
+        return Colors.red;
+    }
+  }
+}
+
 class HomeState extends State<Home> {
   int _radioValue = 0;
   double _height = 150;
   double _weight = 115;
   double _age = 75;
   String bmi = "";
+  BMI _bmi = BMI.UNDERWEIGHT;
+  bool active = false;
 
   String getBMI(double height, double weight) {
+    active = true;
     double inch = height / 2.54;
     double lbs = weight * 2.205;
-    return (703 * (lbs / (inch * inch))).toStringAsFixed(1);
+    var bmi = (703 * (lbs / (inch * inch)));
+    _bmi = BMI.current(bmi);
+    return bmi.toStringAsFixed(1);
   }
 
   void _handleRadioButtonTapped(int value) {
     setState(() {
       _radioValue = value;
+      bmi = getBMI(_height, _weight);
     });
   }
 
   void _handleHeightSliderOnChanged(double value) {
     setState(() {
       _height = value;
+      bmi = getBMI(_height, _weight);
     });
   }
 
   void _handleWeightSliderOnChanged(double value) {
     setState(() {
       _weight = value;
+      bmi = getBMI(_height, _weight);
     });
   }
 
   void _handleAgeSliderOnChanged(double value) {
     setState(() {
       _age = value;
+      bmi = getBMI(_height, _weight);
     });
   }
 
@@ -65,37 +113,36 @@ class HomeState extends State<Home> {
               padding: EdgeInsets.all(24.0),
             ),
             Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Radio(
-                    activeColor: Colors.blueAccent,
-                    groupValue: _radioValue,
-                    value: 0,
-                    onChanged: _handleRadioButtonTapped,
-                  ),
-                  Image.asset(
-                    'images/male.png',
-                    width: 32,
-                    height: 32,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
-                  ),
-                  Radio(
-                    activeColor: Colors.pinkAccent,
-                    groupValue: _radioValue,
-                    value: 1,
-                    onChanged: _handleRadioButtonTapped,
-                  ),
-                  Image.asset(
-                    'images/female.png',
-                    width: 32,
-                    height: 32,
-                  ),
-                ],
-              ),
-            ),
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Radio(
+                  activeColor: Colors.blueAccent,
+                  groupValue: _radioValue,
+                  value: 0,
+                  onChanged: _handleRadioButtonTapped,
+                ),
+                Image.asset(
+                  'images/male.png',
+                  width: 32,
+                  height: 32,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(16.0),
+                ),
+                Radio(
+                  activeColor: Colors.pinkAccent,
+                  groupValue: _radioValue,
+                  value: 1,
+                  onChanged: _handleRadioButtonTapped,
+                ),
+                Image.asset(
+                  'images/female.png',
+                  width: 32,
+                  height: 32,
+                )
+              ],
+            )),
             Container(
               margin: EdgeInsets.all(16.0),
               child: Column(
@@ -105,21 +152,6 @@ class HomeState extends State<Home> {
                       margin: EdgeInsets.all(32.0),
                       child: Column(
                         children: <Widget>[
-                          Text(
-                            "Age  ${_age.toStringAsFixed(0)} ${_age
-                                .toStringAsFixed(0) == "1" ? "year" : "years"}",
-                            style: TextStyle(fontSize: 20, color: Colors.grey),
-                          ),
-                          Slider(
-                            min: 1,
-                            max: 150,
-                            value: _age,
-                            onChanged: _handleAgeSliderOnChanged,
-                            label: "Age",
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(16.0),
-                          ),
                           Text(
                             "Height  ${_height.toStringAsFixed(0)} cm",
                             style: TextStyle(fontSize: 20, color: Colors.grey),
@@ -148,23 +180,34 @@ class HomeState extends State<Home> {
                           Padding(
                             padding: EdgeInsets.all(32.0),
                           ),
-                          Text(bmi, style: TextStyle(fontSize: 34, color: Colors
-                              .blueGrey),),
-                          Padding(
-                            padding: EdgeInsets.all(32.0),
+                          Text(
+                            active ? bmi : "",
+                            style:
+                                TextStyle(fontSize: 34, color: Colors.blueGrey),
                           ),
-                          RaisedButton(
-                            color: Colors.lightBlueAccent,
-                            child: Text(
-                              "Calculate",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                bmi = getBMI(_height, _weight);
-                              });
-                            },
-                          )
+                          Padding(
+                            padding: EdgeInsets.all(4.0),
+                          ),
+                          Text(
+                            active ? _bmi.value : "",
+                            style:
+                                TextStyle(fontSize: 16, color: BMI.color(_bmi)),
+                          ),
+//                          Padding(
+//                            padding: EdgeInsets.all(32.0),
+//                          ),
+//                          RaisedButton(
+//                            color: Colors.lightBlueAccent,
+//                            child: Text(
+//                              "Calculate",
+//                              style: TextStyle(color: Colors.white),
+//                            ),
+//                            onPressed: () {
+//                              setState(() {
+//                                bmi = getBMI(_height, _weight);
+//                              });
+//                            },
+//                          )
                         ],
                       )),
                 ],
