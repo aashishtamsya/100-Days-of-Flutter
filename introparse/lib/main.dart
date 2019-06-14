@@ -1,5 +1,6 @@
 import 'dart:async' show Future;
 import 'dart:convert';
+import 'dart:io' show Platform;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,22 +11,70 @@ void main() async {
 
   runApp(MaterialApp(
     home: Scaffold(
-      appBar: AppBar(title: Text("JSON Parsing - Posts"), backgroundColor: Colors.pinkAccent,),
-      body: Center(
-        child: ListView.builder(
-            itemCount: _data.length,
-            padding: EdgeInsets.all(16.0),
-            itemBuilder: (BuildContext context, int position) {
-              if (position.isOdd) return Divider();
-              return ListTile(
-                  title: Text(
-                _data[position].title,
-                style: TextStyle(fontSize: 18, color: Colors.grey),
-              ));
-            }),
+      appBar: AppBar(
+        title: Text(
+          "JSON Parsing - Posts",
+        ),
+        backgroundColor: Colors.pinkAccent,
       ),
+      body: Center(
+          child: ListView.builder(
+              padding: EdgeInsets.all(8.0),
+              itemCount: _data.length,
+              itemBuilder: (BuildContext context, int position) {
+                if (position.isOdd) return Divider();
+                final index = position ~/ 2;
+                return ListTile(
+                  contentPadding: EdgeInsets.all(8.0),
+                  subtitle: Text(
+                    _data[index].body,
+                    style: TextStyle(
+                        color: Colors.grey, fontStyle: FontStyle.italic),
+                  ),
+                  title: Text(_data[index].title),
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.lightBlue,
+                    child: Text(
+                      _data[index].id.toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  onTap: () {
+                    _showOnTapMessage(context, _data[index].body);
+                  },
+                );
+              })),
     ),
   ));
+}
+
+void _showOnTapMessage(BuildContext context, String message) {
+  var alert = Platform.isAndroid
+      ? AlertDialog(
+          title: Text("App"),
+          content: Text(message),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("Ok"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        )
+      : CupertinoAlertDialog(
+          title: Text("App"),
+          content: Text(message),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        );
+  showDialog(context: context, child: alert);
 }
 
 Future<List> getJSON() async {

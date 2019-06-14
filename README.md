@@ -18,6 +18,8 @@ This respository contains all the source code which I did while learning Flutter
  - [Login Form](#login-form)
  - [Weight On Planet X](#weight-on-planet-x)
  - [BMI Calculator](#bmi-calculator)
+ - [JSON Parsing](#Jjson-parsing)
+ - [EarthQuake](#earthquake)
  
 ### Hello Flutter
 
@@ -75,7 +77,7 @@ Weight On Planet X is an application which uses radio button to calculate your w
 
 ![Weight On Planet X](/resources/weight_on_planet_x.png "Weight On Planet X")
 
-### Weight On Planet X
+### BMI Calculator
 
 BMI Calculator is an application which uses sliders to calculate your BMI.
 
@@ -83,6 +85,21 @@ BMI Calculator is an application which uses sliders to calculate your BMI.
 
 ![BMI Calculator](/resources/bmi_calculator.png "BMI Calculator")
 
+### JSON Parsing
+
+An app for introduction to JSON Parsing.
+
+[/project](/introparse)
+
+![JSON Parsing](/resources/intro_parse.png "JSON Parsing")
+
+### EarthQuake
+
+An app for display recent earthquakes occurred across the planet Earth.
+
+[/project](/quake_app)
+
+![EarthQuake](/resources/earthquake.png "EarthQuake")
 
 ## Contributor 
 
