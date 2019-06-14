@@ -18,7 +18,7 @@ This respository contains all the source code which I did while learning Flutter
  - [Login Form](#login-form)
  - [Weight On Planet X](#weight-on-planet-x)
  - [BMI Calculator](#bmi-calculator)
- - [JSON Parsing](#Jjson-parsing)
+ - [JSON Parsing](#json-parsing)
  - [EarthQuake](#earthquake)
  
 ### Hello Flutter
