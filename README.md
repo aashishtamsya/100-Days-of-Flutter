@@ -19,7 +19,8 @@ This respository contains all the source code which I did while learning Flutter
  - [Weight On Planet X](#weight-on-planet-x)
  - [BMI Calculator](#bmi-calculator)
  - [JSON Parsing](#json-parsing)
- - [EarthQuake](#earthquake)
+ - [EarthQuake App](#earthquake-app)
+ - [Navigation Introduction](#navigation-introduction)
  
 ### Hello Flutter
 
@@ -93,13 +94,22 @@ An app for introduction to JSON Parsing.
 
 ![JSON Parsing](/resources/intro_parse.png "JSON Parsing")
 
-### EarthQuake
+### EarthQuake App
 
 An app for display recent earthquakes occurred across the planet Earth.
 
 [/project](/quake_app)
 
 ![EarthQuake](/resources/earthquake.png "EarthQuake")
+
+### Navigation Introduction
+
+Introduction to navigation and router in Flutter, how to pass values between screens.
+
+[/project](/navigation intro)
+
+![Navigation Introduction](/resources/navigation intro.png "Navigation Introduction")
+
 
 ## Contributor 
 
