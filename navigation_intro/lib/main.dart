@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +17,19 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   var _nameFieldController = TextEditingController();
+
+  Future getDetails(BuildContext context) async {
+    Map details = await Navigator.of(context)
+        .push(MaterialPageRoute<Map>(builder: (BuildContext context) {
+      return Detail(name: _nameFieldController.text.toString());
+    }));
+    if (details != null && details.containsKey("details")) {
+      print(details["details"].toString());
+      _nameFieldController.text = details["details"].toString();
+    } else {
+      print("Nothing!");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +53,7 @@ class _HomeState extends State<Home> {
             title: RaisedButton(
               child: Text("Go"),
               onPressed: () {
-                final router = MaterialPageRoute(
-                    builder: (BuildContext context) => Detail(name: _nameFieldController.text.toString(),));
-                Navigator.push(context, router);
+                getDetails(context);
               },
             ),
           )
@@ -60,6 +73,8 @@ class Detail extends StatefulWidget {
 }
 
 class _DetailState extends State<Detail> {
+  final _detailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,8 +82,31 @@ class _DetailState extends State<Detail> {
         title: Text("Detail"),
         backgroundColor: Colors.lightGreenAccent,
       ),
-      body: Center(
-        child: Text("${widget.name}", style: TextStyle(fontSize: 34, fontWeight: FontWeight.w900),),
+      body: ListView(
+        children: <Widget>[
+          ListTile(
+            title: Text(
+              "${widget.name}",
+              style: TextStyle(fontSize: 34, fontWeight: FontWeight.w900),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          ListTile(
+            title: TextField(
+              controller: _detailController,
+              decoration: InputDecoration(hintText: "Enter Details"),
+            ),
+          ),
+          ListTile(
+            title: RaisedButton(
+              child: Text("Send to Detail"),
+              onPressed: () {
+                Navigator.pop(
+                    context, {"details": _detailController.text.toString()});
+              },
+            ),
+          )
+        ],
       ),
     );
   }
