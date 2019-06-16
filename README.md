@@ -106,10 +106,9 @@ An app for display recent earthquakes occurred across the planet Earth.
 
 Introduction to navigation and router in Flutter, how to pass values between screens.
 
-[/project](/navigation intro)
+[/project](/navigation_intro)
 
-![Navigation Introduction](/resources/navigation intro.png "Navigation Introduction")
-
+![Navigation Introduction](/resources/navigation_intro_.png "Navigation Introduction")
 
 ## Contributor 
 
