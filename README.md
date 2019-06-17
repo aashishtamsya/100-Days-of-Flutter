@@ -117,9 +117,9 @@ Weather App which uses OpenWeatherMap API to display weather of different places
 
 > API Key has been deleted (Use your own API Key).
 
-[/project](/weather app)
+[/project](/weather_app)
 
-![Weather App](/resources/weather app.png "Weather App")
+![Weather App](/resources/weather_app.png "Weather App")
 
 ## To contribute
 
