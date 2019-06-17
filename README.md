@@ -121,6 +121,9 @@ Weather App which uses OpenWeatherMap API to display weather of different places
 
 ![Weather App](/resources/weather app.png "Weather App")
 
+## To contribute
+
+Feel free to fork and contribute to the project. You can also star if you this repository help you learn concepts in Flutter.
 
 ## Contributor 
 
