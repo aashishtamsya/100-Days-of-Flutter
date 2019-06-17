@@ -115,6 +115,8 @@ Introduction to navigation and router in Flutter, how to pass values between scr
 
 Weather App which uses OpenWeatherMap API to display weather of different places.
 
+> API Key has been deleted (Use your own API Key).
+
 [/project](/weather app)
 
 ![Weather App](/resources/weather app.png "Weather App")
