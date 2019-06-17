@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:weather_app/Model/Weather.dart';
+import 'package:weather_app/Model/weather.dart' as prefix0;
+import 'package:weather_app/UI/search.dart';
 import 'package:weather_app/Util/util.dart';
 
 class Home extends StatefulWidget {
@@ -14,14 +16,10 @@ class Home extends StatefulWidget {
 
 class _State extends State<Home> {
   var _cityname = DEFAULT_CITY;
+  var _icon = "";
 
-  void showWeather() async {
+  void _showWeather() async {
     Weather data = await getWeather(_cityname);
-    print(data.name);
-    print(data.main);
-    print(data.icon);
-    print(data.desc);
-    print(data.temp);
   }
 
   @override
@@ -35,7 +33,7 @@ class _State extends State<Home> {
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
-              showWeather();
+              goToNextScreen(context);
             },
           )
         ],
@@ -54,21 +52,7 @@ class _State extends State<Home> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(64),
-                  ),
-                  Image.asset(
-                    "images/cloud.png",
-                    width: 96,
-                    height: 96,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(12),
-                  ),
                   updateTemperatureWidget(_cityname),
-                  Padding(
-                    padding: EdgeInsets.all(12),
-                  ),
                 ],
               ),
             ),
@@ -83,7 +67,10 @@ class _State extends State<Home> {
         "http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric";
     http.Response response = await http.get(url);
     final parse = json.decode(response.body);
-    return Weather.fromJson(parse);
+    final weather = Weather.fromJson(parse);
+    print(weather.icon);
+    print(prefix0.asset(weather.icon));
+    return weather;
   }
 
   Widget updateLocationWidget(String) {
@@ -115,11 +102,22 @@ class _State extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 ListTile(
+                  title: Image.asset(
+                    "images/${prefix0.asset(weather.icon)}.png",
+                    width: 96,
+                    height: 96,
+                  ),
+                ),
+                ListTile(
                   title: Text(
                     "${weather.temp}º C",
                     style: tempeartureStyle(),
+                    textAlign: TextAlign.center,
                   ),
-                  subtitle: Text("${weather.desc}"),
+                  subtitle: Text(
+                    "${weather.desc}",
+                    textAlign: TextAlign.center,
+                  ),
                 )
               ],
             ),
@@ -129,6 +127,20 @@ class _State extends State<Home> {
         }
       },
     );
+  }
+
+  Future goToNextScreen(
+    BuildContext context,
+  ) async {
+    Map results = await Navigator.push(context,
+        MaterialPageRoute<Map>(builder: (BuildContext context) {
+      return ChangeCity();
+    }));
+
+    if (results != null && results.containsKey("cityname")) {
+      _cityname = results["cityname"].toString();
+      _showWeather();
+    }
   }
 }
 

@@ -21,6 +21,7 @@ This respository contains all the source code which I did while learning Flutter
  - [JSON Parsing](#json-parsing)
  - [EarthQuake App](#earthquake-app)
  - [Navigation Introduction](#navigation-introduction)
+ - [Weather App](#weather-app)
  
 ### Hello Flutter
 
@@ -108,7 +109,16 @@ Introduction to navigation and router in Flutter, how to pass values between scr
 
 [/project](/navigation_intro)
 
-![Navigation Introduction](/resources/navigation_intro_.png "Navigation Introduction")
+![Navigation Introduction](/resources/navigation_intro.png "Navigation Introduction")
+
+### Weather App
+
+Weather App which uses OpenWeatherMap API to display weather of different places.
+
+[/project](/weather app)
+
+![Weather App](/resources/weather app.png "Weather App")
+
 
 ## Contributor 
 
