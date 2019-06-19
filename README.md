@@ -1,4 +1,4 @@
-![Learn Flutter](/resources/cover_100.png "Learn Flutter")
+![Learn Flutter](/resources/cover.png "Learn Flutter")
 
 <!-- # Learn Flutter -->
 
