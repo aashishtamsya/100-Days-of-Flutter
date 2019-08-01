@@ -1,4 +1,4 @@
-package com.aashishtamsya.notodo.notodo
+package com.aashishtamsya.readwriteapp.readwriteapp
 
 import android.os.Bundle
 
