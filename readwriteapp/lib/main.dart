@@ -1,10 +1,9 @@
-import 'dart:async';
-import 'dart:io';
+
 
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:readwriteapp/Utils/filehelper.dart';
 
-void main() {
+void main() async {
   runApp(MaterialApp(title: "Taskr", home: new Home()));
 }
 
@@ -15,10 +14,12 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   TextEditingController _enterDataField = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Read Write App"), backgroundColor: Colors.green,),
+      appBar: AppBar(
+        title: Text("Read Write App"), backgroundColor: Colors.green,),
       body: Container(
         padding: EdgeInsets.all(14),
         alignment: Alignment.topCenter,
@@ -30,43 +31,26 @@ class _HomeState extends State<Home> {
             ),
           ),
           subtitle: FlatButton(
+            padding: EdgeInsets.all(20),
             onPressed: () {
-
+              writeData(_enterDataField.text);
             },
             child: Column(
               children: <Widget>[
                 Text("Save Data"),
                 Padding(padding: EdgeInsets.all(13),),
-                Text("Saved Data goes here")
+                Text("Saved Data goes here"),
+                Padding(padding: EdgeInsets.all(24),),
+                FutureBuilder(future: readData(), builder: (BuildContext context, AsyncSnapshot<String> data) {
+                  if (data.hasData != null) {
+                    return Text(data.data, style: TextStyle(color: Colors.blue),);
+                  }
+                })
               ],
             ),
           ),
         ),
       ),
     );
-  }
-
-  Future<String> get localPath async {
-    final directory = await getApplicationDocumentsDirectory();
-    return directory.path;
-  }
-
-  Future<File> get localFile async {
-    final path = await localPath;
-    return new File("$path/data.txt");
-  }
-
-  Future<File> writeData(String message) async {
-    final file = await localFile;
-    return file.writeAsString("$message");
-  }
-
-  Future<String> readData() async {
-    try {
-      final file = await localFile;
-      return file.readAsString();
-    } catch (err) {
-      return "Nothing saved yet!";
-    }
   }
 }
